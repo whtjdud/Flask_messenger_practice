@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>TalkTok</h1>
+        <form action="{{ url_for('send') }}" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="message" placeholder="Message" required>
+            <button type="submit">Send</button>
+        </form>
+        <div class="messages">
+            {% for msg in messages|reverse %}
+                <p><strong>{{ msg.username }}:</strong> {{ msg.message }}</p>
+            {% endfor %}
+        </div>
+      </div>
+</body>
+</html>
